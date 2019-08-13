@@ -22,17 +22,16 @@ var p1Multiplier = 0;
 var p2Multiplier = 0;
 var multiplierColor = false;
 var timerPaused = false;
-var timer = 80 * 5;
+var timer = 60 * 5;
 var state = 2;
 var winner = 0;
 
 function setup() {
 	createCanvas(400, 400)
-	frameRate(80);
+	frameRate(60);
 }
 
 var choose = function(p, s) {
-	print(p + ", " +  s);
     if (p === 1) {
         p1Selection = s;
     } else {
@@ -50,11 +49,13 @@ var scoreboard = function() {
     line(250, 0, 250, 48);
     
     fill(255, 255, 255);
-    textSize(50);
+	textSize(50);
+	strokeWeight(0);
     text(ceil(p1Score), 25, 5, 400, 400);
     text(ceil(p2Score), 275, 5, 400, 400);
     text(ceil(timer/80), 188, 5, 400, 400);
-    
+	strokeWeight(3);
+	
     if (p1Selection === 0 && p2Selection === 0) {
         timerPaused = true;
     } else {
@@ -183,6 +184,7 @@ if (p1 === 1 && p2 === 2) {
 };
 
 var showMultiplier = function(p, x, y) {
+	strokeWeight(0);
     textSize(30);
     fill(100, 100, 100);
     if (p === 1) {
@@ -308,7 +310,8 @@ var selection = function() {
     fill(100, 100, 100);
     
     if (p2Selection === 0) {
-        textSize(35);
+		textSize(35);
+		strokeWeight(0);
         text("Player 2", 245, 230, 400, 400);
         textSize(50);
         text("4", 235, 280, 400, 400);
@@ -349,7 +352,8 @@ var end = function() {
     background(100, 100, 100);
     textSize(70);
     textAlign(CENTER, CENTER);
-    fill(255, 255, 255);
+	fill(255, 255, 255);
+	strokeWeight(0);
     if (p1Score >= p2Score) {
         text("PLAYER 1", 200, 125);
         
