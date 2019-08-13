@@ -31,7 +31,8 @@ function setup() {
 	frameRate(80);
 }
 
-var select = function(p, s) {
+var choose = function(p, s) {
+	print(p + ", " +  s);
     if (p === 1) {
         p1Selection = s;
     } else {
@@ -76,11 +77,11 @@ var scoreboard = function() {
             p2Selection = 0;
         } else {
             if (p1Selection === 0) {
-                select(1, ceil(random(0, 3)));
+                choose(1, ceil(random(0, 3)));
             }
             
             if (p2Selection === 0) {
-                select(2, ceil(random(0, 3)));
+                choose(2, ceil(random(0, 3)));
             }
             
             state++;
@@ -292,6 +293,7 @@ var selection = function() {
     fill(100, 100, 100);
     
     if (p1Selection === 0) {
+		strokeWeight(0);
         textSize(35);
         text("Player 1", 40, 230, 400, 400);
         textSize(50);
@@ -335,7 +337,8 @@ var selection = function() {
 var blank = function() {
     fill(30, 30, 30);
     rect(0, 0, 400, 400);
-    fill(255, 255, 255);
+	fill(255, 255, 255);
+	strokeWeight(0);
     textFont("Impact", 40);
     text("Rock, Paper, Scissors", 10, 180);
     fill(194, 66, 66);
@@ -436,19 +439,19 @@ var mousePressed = function() {
 var keyPressed = function() {
     if (state !== 0) {
         return;
-    }
+	}
     
-    if (key.code === 49) {
-        select(1, 1);
-    } else if (key.code === 50) {
-        select(1, 2);
-    } else if (key.code === 51) {
-        select(1, 3);
-    } else if (key.code === 52) {
-        select(2, 1);
-    } else if (key.code === 53) {
-        select(2, 2);
-    } else if (key.code === 54) {
-        select(2, 3);
+    if (keyCode === 49) {
+		choose(1, 1);
+    } else if (keyCode === 50) {
+        choose(1, 2);
+    } else if (keyCode === 51) {
+        choose(1, 3);
+    } else if (keyCode === 52) {
+        choose(2, 1);
+    } else if (keyCode === 53) {
+        choose(2, 2);
+    } else if (keyCode === 54) {
+        choose(2, 3);
     }
 };
