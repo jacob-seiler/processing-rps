@@ -26,7 +26,10 @@ var timer = 80 * 5;
 var state = 2;
 var winner = 0;
 
-frameRate(80);
+function setup() {
+	createCanvas(400, 400)
+	frameRate(80);
+}
 
 var select = function(p, s) {
     if (p === 1) {
@@ -333,8 +336,7 @@ var blank = function() {
     fill(30, 30, 30);
     rect(0, 0, 400, 400);
     fill(255, 255, 255);
-    var f = createFont("Impact");
-    textFont(f, 40);
+    textFont("Impact", 40);
     text("Rock, Paper, Scissors", 10, 180);
     fill(194, 66, 66);
     text("Click to start", 10, 220);
